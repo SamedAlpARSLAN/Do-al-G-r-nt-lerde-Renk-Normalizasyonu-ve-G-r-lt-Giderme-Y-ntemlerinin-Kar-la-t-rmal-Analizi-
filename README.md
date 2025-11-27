@@ -1,3 +1,75 @@
+$readmeContent = @'
+# Doğal Görüntülerde Renk Normalizasyonu ve Gürültü Giderme Analizi
+
+**Öğrenci:** Samed Alp Arslan (220205012)  
+**Ders:** Sayısal Görüntü İşleme (Digital Image Processing)
+
+## 📄 Proje Özeti
+Bu çalışma, **BSDS500** doğal görüntü veri kümesi üzerinde farklı **renk normalizasyonu** ve **gürültü giderme (denoise)** yöntemlerinin performansını karşılaştırmalı olarak analiz eder.
+
+Amaç; renk sapmalarını ve gürültüyü giderirken görüntünün yapısal bütünlüğünü (SSIM) en iyi koruyan kombinasyonu belirlemektir.
+
+---
+
+## 🛠️ Kullanılan Yöntemler
+
+### 1. Gürültü Modelleri
+Deneylerde görüntülere yapay olarak şu gürültüler eklenmiştir:
+- **Gauss Gürültüsü:** $\sigma=0.05$
+- **Tuz-Biber (Salt & Pepper):** Yoğunluk $\approx\%2$
+
+### 2. Renk Normalizasyonu Teknikleri
+- **Reinhard:** Lab renk uzayında istatistiksel eşleştirme.
+- **Gray-World:** Kanal ortalamalarını eşitleyerek beyaz dengeleme.
+- **Histogram Eşleştirme:** Referans görüntü histogramına uydurma.
+- **None:** Normalizasyon uygulanmayan kontrol grubu.
+
+### 3. Gürültü Giderme (Denoise) Filtreleri
+- **Gaussian Blur:** Gauss gürültüsü için (ksize=5).
+- **Median Filtre:** Tuz-biber gürültüsü için (ksize=3).
+- **Non-Local Means (NLM):** Dokusal detayları koruyan gelişmiş filtreleme.
+
+---
+
+## 📊 Değerlendirme Metrikleri
+Başarım ölçümü için orijinal görüntüler referans alınarak şu metrikler kullanılmıştır:
+1. **PSNR** (Peak Signal-to-Noise Ratio)
+2. **SSIM** (Structural Similarity Index)
+3. **RMSE** (Root Mean Square Error)
+
+---
+
+## 📈 Bulgular ve Sonuçlar
+
+Deney sonuçlarına göre öne çıkan bulgular:
+
+### Genel Başarım (SSIM)
+| Senaryo | Denoise Yöntemi | SSIM Başarısı | Yorum |
+|---------|-----------------|---------------|-------|
+| **Gray-World** | Non-Local Means | ⭐ Yüksek | Yapısal benzerliği en iyi koruyan kombinasyon. |
+| **None** | Gaussian Blur | 🟢 Orta | Gauss gürültüsünde etkili ancak detay kaybı var. |
+| **Reinhard** | (Tümü) | 🔴 Düşük | Renk istatistiklerini agresif değiştirdiği için SSIM düşmektedir. |
+
+### Örnek Sonuçlar (Görsel)
+![Sonuç Örneği](results/summary_ssim.png)
+*Şekil: Farklı yöntemlerin ortalama SSIM karşılaştırması.*
+
+### Sonuç
+Doğal görüntülerde **Gray-World + NLM** veya **None + NLM** kombinasyonları en tutarlı sonuçları vermiştir. Reinhard ve Histogram eşleştirme gibi yöntemler, doğal sahnelerin renk karakteristiğini bozabildiği için yapısal benzerlik skorlarını düşürmüştür.
+
+---
+
+## 🚀 Kurulum
+
+Gerekli kütüphaneleri yüklemek için:
+
+pip install -r requirements.txt
+Projeyi çalıştırmak için:
+python main.py
+
+***
+***
+***
 # Berkeley Segmentation Data Set and Benchmarks 500 (BSDS500)
 
 ## Overview
