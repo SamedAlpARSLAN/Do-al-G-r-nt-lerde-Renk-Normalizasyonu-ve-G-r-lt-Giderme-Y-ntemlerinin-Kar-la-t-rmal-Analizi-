@@ -1,7 +1,7 @@
 $readmeContent = @'
 # Doğal Görüntülerde Renk Normalizasyonu ve Gürültü Giderme Analizi
 
-**Öğrenci:** Samed Alp Arslan (220205012)  
+**Öğrenci:** Samed Alp Arslan  
 **Ders:** Sayısal Görüntü İşleme (Digital Image Processing)
 
 ## 📄 Proje Özeti
