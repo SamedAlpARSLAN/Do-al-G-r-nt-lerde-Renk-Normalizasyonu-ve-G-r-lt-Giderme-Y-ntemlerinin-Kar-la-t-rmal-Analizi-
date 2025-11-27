@@ -1,0 +1,15 @@
+﻿# Python ve Sistem
+__pycache__/
+*.pyc
+.venv/
+.env
+
+# Büyük Veri Klasörleri (Github'a yüklenmeyecek)
+data/
+bench/
+grouping/
+
+# Sonuç klasöründeki büyük zipler ve gereksizler
+results/*.zip
+*.rar
+*.tar.gz
